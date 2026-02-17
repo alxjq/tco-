@@ -63,7 +63,7 @@ func initDB() {
 	}
 
 	// Create default admin user (if not already exists)
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte("adminalex123"), bcrypt.DefaultCost)
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte("your_password"), bcrypt.DefaultCost)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -71,7 +71,7 @@ func initDB() {
 	_, err = db.Exec(`
 	INSERT OR IGNORE INTO users (username, password, is_admin)
 	VALUES (?, ?, 1)
-	`, "alex", string(hashedPassword))
+	`, "YOUR_USERNAME", string(hashedPassword))
 	if err != nil {
 		log.Fatal(err)
 	}
